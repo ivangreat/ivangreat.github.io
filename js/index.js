@@ -17,7 +17,7 @@
       return interval + " 天前";
     }
     interval = Math.floor(seconds / 3600);
-    if (interval > 1) {
+    if (interval >= 1) {
       return interval + " 小时前";
     }
     interval = Math.floor(seconds / 60);

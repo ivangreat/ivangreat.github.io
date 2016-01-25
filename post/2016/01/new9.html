@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=1">
+        <meta name="keywords" content="YouTube,下载,">
+        <meta name="description" content="下载YouTube视频">
+        <link rel="stylesheet" href="/css/index.min.css">
+        <link rel="stylesheet" href="/css/github.min.css">
+        <link rel="shortcut icon" href="/favicon.png">
+        <title>下载YouTube视频</title>
+    </head>
+    <body>
+        <article class="container">
+            <ul class="menu">
+    <li class="menu-item"><a href="/atom.xml">订阅</a></li>
+    <li class="menu-item"><a href="/archive.html">归档</a></li>
+    <li class="menu-item"><a href="/tag.html">标签</a></li>
+    <li class="menu-item"><a href="/">主页</a></li>
+</ul>
+            <article class="main article">
+                <h1 class="title">下载YouTube视频</h1>
+                <section class="info">
+                    <span class="date" data-time="1453725174">
+                        <span class="from"></span>
+                        
+                    </span>
+                    <span class="tags"><a class="tag" href="/tag/YouTube/index.html">YouTube</a><a class="tag" href="/tag/%e4%b8%8b%e8%bd%bd/index.html">下载</a></span>
+                </section>
+                <article class="content"><p>YouTube上1080p及以上的视频和音频确实是分离的，要想下载最高品质的视频就需要下载其视频和音频进行合并，而且这个方案就可以在下载完后自动合并，并且支持下载指定列表、按指定规则命名、批量下载自定义文本形式的url列表等等，相当强大。</p>
+
+<p>繁琐是因为这个方法要在<code>Linux</code>下（或<code>OSX</code>），所以这里必须满足以下条件中的任意一个：
+自己在虚拟机里安装了一个<code>ubuntu</code>(或者别的发行版，但我这个方法以<code>ubuntu</code>为例），并能FQ。
+在国外有一台VPS，系统是<code>ubuntu</code></p>
+
+<p>好了，先在系统中安装<code>ffmpeg</code>(也可以安装<code>avconv</code>)，打开终端：</p>
+
+<pre><code> apt-get install python-software-properties software-properties-common
+
+ apt-add-repository ppa:mc3man/trusty-media
+
+ apt-get update
+
+ apt-get install ffmpeg gstreamer0.10-ffmpeg
+</code></pre>
+
+<p>下载<code>youtube-dl</code> (这里的最新版本是2015.03.09，下载时可以到<code>youtube-dl</code>: Download Page寻找最新地址)</p>
+
+<pre><code>curl https://yt-dl.org/downloads/2015.03.09/youtube-dl -o / usr/local/bin/youtube-dl
+
+chmod a+x /usr/local/bin/youtube-dl
+</code></pre>
+
+<p>好了，现在已经完成安装了，下面是<code>yotube-dl</code>最常用的两个命令:
+<code>youtube-dl -F &lt;url&gt;</code> : 此命令用来查看单个视频或一个播放列表里所有视频所支持的格式，比如我输入</p>
+
+<pre><code>youtube-dl -F https://www.youtube.com/watch?v=fLe_qO4AE-M
+</code></pre>
+
+<p>就会显示如下信息：</p>
+
+<blockquote>
+<pre><code>[youtube] fLe_qO4AE-M: Downloading webpage
+...
+
+141 m4a audio only DASH audio 255k , aac @256k (44100Hz), 4.57MiB
+
+...
+136 mp4 1280x720 DASH video 2208k , 24fps, video only, 23.02MiB
+...
+</code></pre>
+</blockquote>
+
+<p>每种格式前面就会有一个ID，这时候就需要第二个命令：
+<code>youtube-dl -f &lt;id&gt; &lt;url&gt;</code> : 此命令用来下载单个视频或一个播放列表所有视频，id可以是一个上面列表中列出的格式ID，也可以是两个ID加起来，比如我想下载上面视频的 136格式的视频+141格式的音频，并让他们下载完后自动合并，命令如下：
+  <code>youtube-dl -f 136+141 https://www.youtube.com/watch?v=fLe_qO4AE-M</code></p>
+
+<p>回车后就会出现如下信息：</p>
+
+<blockquote>
+<pre><code>[youtube] fLe_qO4AE-M: Downloading webpage
+
+.....
+
+[ffmpeg] Merging formats into 
+
+&quot;Edge Of Tomorrow Official Trailer #1 (2014) - Tom Cruise, Emily Blunt Movie HD-fLe_qO4AE-M.mp4&quot;
+</code></pre>
+</blockquote>
+
+<p>视频就下载在当前目录了。</p>
+
+<hr />
+</article>
+                <section class="author">
+                    <div class="avatar" style="background-image: url(/images/avatar.jpg);"></div>
+                    
+                    <div class="intro">不对互联网感兴趣的文科生不是好翻译</div>
+                </section>
+                <section class="recommend">
+                    
+                    
+                    <section class="nav prev more">
+                        <div class="head">上一篇</div>
+                        
+                        <a class="link" href="/post/2016/01/new8.html">终于搞定了，NND...</a>
+                    </section>
+                    
+                </section>
+                
+                <div class="ds-thread" data-thread-key="" data-title="下载YouTube视频" data-url="blog.ivanhao.top/post/2016/01/new9.html"></div>
+                
+            </article>
+        </article>
+        <footer class="footer">
+    <span class="copyright">
+        <a href="/">ivanhao的博客</a> ©
+        <script type="text/javascript">
+            document.write(new Date().getFullYear());
+        </script>
+        <a href="mailto:ivanhao@ivanhao.top" target="_blank"> 我的Email</a>
+    </span>
+    <span class="publish">Thanks Nigh / Powered By <a href="http://www.inkpaper.io/" target="_blank">Ink</a></span>
+</footer>
+
+            <script src="/js/jquery-1.11.2.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/SmoothScroll.js"></script>
+        <script src="/js/highlight.pack.js"></script>
+        <script src="/js/jquery.unveil.js"></script>
+        
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"ivanhao"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+        
+    </body>
+</html>

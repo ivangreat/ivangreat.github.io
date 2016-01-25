@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>ivanhao的博客</title>
   <id>http://blog.ivanhao.top</id>
-  <updated>2016-01-24T01:35:43+08:00</updated>
+  <updated>2016-01-25T20:42:38+08:00</updated>
   <subtitle>随便写写吧</subtitle>
   <link href="http://blog.ivanhao.top"></link>
   <author>
     <name>ivanhao的博客</name>
   </author>
+  <entry>
+    <title>下载YouTube视频</title>
+    <updated>1970-01-01T08:00:00+08:00</updated>
+    <id>tag:blog.ivanhao.toppost,1970-01-01:/2016/01/new9.html</id>
+    <content type="html">&lt;p&gt;YouTube上1080p及以上的视频和音频确实是分离的，要想下载最高品质的视频就需要下载其视频和音频进行合并，而且这个方案就可以在下载完后自动合并，并且支持下载指定列表、按指定规则命名、批量下载自定义文本形式的url列表等等，相当强大。&lt;/p&gt;&#xA;&#xA;&lt;p&gt;繁琐是因为这个方法要在&lt;code&gt;Linux&lt;/code&gt;下（或&lt;code&gt;OSX&lt;/code&gt;），所以这里必须满足以下条件中的任意一个：&#xA;自己在虚拟机里安装了一个&lt;code&gt;ubuntu&lt;/code&gt;(或者别的发行版，但我这个方法以&lt;code&gt;ubuntu&lt;/code&gt;为例），并能FQ。&#xA;在国外有一台VPS，系统是&lt;code&gt;ubuntu&lt;/code&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;好了，先在系统中安装&lt;code&gt;ffmpeg&lt;/code&gt;(也可以安装&lt;code&gt;avconv&lt;/code&gt;)，打开终端：&lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt; apt-get install python-software-properties software-properties-common&#xA;&#xA; apt-add-repository ppa:mc3man/trusty-media&#xA;&#xA; apt-get update&#xA;&#xA; apt-get install ffmpeg gstreamer0.10-ffmpeg&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;下载&lt;code&gt;youtube-dl&lt;/code&gt; (这里的最新版本是2015.03.09，下载时可以到&lt;code&gt;youtube-dl&lt;/code&gt;: Download Page寻找最新地址)&lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;curl https://yt-dl.org/downloads/2015.03.09/youtube-dl -o / usr/local/bin/youtube-dl&#xA;&#xA;chmod a+x /usr/local/bin/youtube-dl&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;好了，现在已经完成安装了，下面是&lt;code&gt;yotube-dl&lt;/code&gt;最常用的两个命令:&#xA;&lt;code&gt;youtube-dl -F &amp;lt;url&amp;gt;&lt;/code&gt; : 此命令用来查看单个视频或一个播放列表里所有视频所支持的格式，比如我输入&lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;youtube-dl -F https://www.youtube.com/watch?v=fLe_qO4AE-M&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;就会显示如下信息：&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;pre&gt;&lt;code&gt;[youtube] fLe_qO4AE-M: Downloading webpage&#xA;...&#xA;&#xA;141 m4a audio only DASH audio 255k , aac @256k (44100Hz), 4.57MiB&#xA;&#xA;...&#xA;136 mp4 1280x720 DASH video 2208k , 24fps, video only, 23.02MiB&#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;每种格式前面就会有一个ID，这时候就需要第二个命令：&#xA;&lt;code&gt;youtube-dl -f &amp;lt;id&amp;gt; &amp;lt;url&amp;gt;&lt;/code&gt; : 此命令用来下载单个视频或一个播放列表所有视频，id可以是一个上面列表中列出的格式ID，也可以是两个ID加起来，比如我想下载上面视频的 136格式的视频+141格式的音频，并让他们下载完后自动合并，命令如下：&#xA;  &lt;code&gt;youtube-dl -f 136+141 https://www.youtube.com/watch?v=fLe_qO4AE-M&lt;/code&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;回车后就会出现如下信息：&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;pre&gt;&lt;code&gt;[youtube] fLe_qO4AE-M: Downloading webpage&#xA;&#xA;.....&#xA;&#xA;[ffmpeg] Merging formats into &#xA;&#xA;&amp;quot;Edge Of Tomorrow Official Trailer #1 (2014) - Tom Cruise, Emily Blunt Movie HD-fLe_qO4AE-M.mp4&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;视频就下载在当前目录了。&lt;/p&gt;&#xA;&#xA;&lt;hr /&gt;&#xA;</content>
+    <link href="http://blog.ivanhao.toppost/2016/01/new9.html"></link>
+    <author>
+      <name>ivanhao</name>
+    </author>
+  </entry>
   <entry>
     <title>终于搞定了，NND...</title>
     <updated>1970-01-01T08:00:00+08:00</updated>
